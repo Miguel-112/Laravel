@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+ use Illuminate\Database\Eloquent\Casts\Attribute; //e tiene que importar para usar los
+
+
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,4 +45,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected function name(): Attribute{ //transforma el valor en minuscula y lo guarda en la base de datos
+
+        return new Attribute(
+
+            get:fn($value)=>ucwords($value), //accesor lo trae cuando ya esta almacenado se usa en consultas
+
+                 
+
+        
+
+            set:fn($value) => strtolower($value)// Mutador lo transforma antes de almacenarlo
+
+              
+
+            
+        );
+    }
 }
