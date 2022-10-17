@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreCurso;
+use App\Http\Requests\Cursoupdate;
 use App\Models\Curso;
 use Illuminate\Http\Request;
+
 
 class CursoController extends Controller
 {
@@ -22,7 +26,7 @@ class CursoController extends Controller
     }
 
 
-    public function store(Request $request){
+    public function store(StoreCurso $request){
 
         // return $request->all();
 
@@ -35,9 +39,6 @@ class CursoController extends Controller
         $curso->save();
 
         return redirect()->route('cursos.show',$curso);
-
-
-
 
 
     }
@@ -65,7 +66,10 @@ class CursoController extends Controller
     }
 
 
-    public function update(Curso $curso, Request $request){
+    public function update(Curso $curso, Cursoupdate $request){
+
+       
+
 
         $curso->nombre = $request->nombre;
         $curso->descripcion = $request->descripcion;
