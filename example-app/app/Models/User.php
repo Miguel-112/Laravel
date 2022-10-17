@@ -52,10 +52,6 @@ class User extends Authenticatable
 
             get:fn($value)=>ucwords($value), //accesor lo trae cuando ya esta almacenado se usa en consultas
 
-                 
-
-        
-
             set:fn($value) => strtolower($value)// Mutador lo transforma antes de almacenarlo
 
               

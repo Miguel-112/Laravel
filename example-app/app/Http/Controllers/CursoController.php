@@ -1,14 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Curso;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
     public function index(){ //metodo principal
 
-        return view('cursos.index');
+        $cursos = Curso::orderBy('id','desc')->paginate();
+        
+
+        return view('cursos.index', compact('cursos'));// le pasamos los cursos a la vista
+
     }
 
     public function create(){ //metodo mostrar para crear un formulario
@@ -17,10 +21,57 @@ class CursoController extends Controller
     
     }
 
-    public function show($curso){ //metodo mostrar un elemnto en particular
 
-        //compact('curso') //['curso'=>$curso] devuelve est array
+    public function store(Request $request){
+
+        // return $request->all();
+
+        $curso = new Curso();
+
+        $curso->nombre = $request->nombre;
+        $curso->descripcion = $request->descripcion;
+        $curso->categoria = $request->categoria;
+
+        $curso->save();
+
+        return redirect()->route('cursos.show',$curso);
+
+
+
+
+
+    }
+
+    public function show(Curso $curso){ //metodo mostrar un elemnto en particular
+
+
+        // $curso = Curso::find($id);// devuelve un curso por el id de la base de datos
+        // //compact('curso') //['curso'=>$curso] devuelve est array
 
         return view('cursos.show',compact('curso'));
+    }
+
+
+
+    public function edit(Curso $curso){
+
+        // $curso = Curso::find($id);
+
+        // return $curso;
+
+        return view('cursos.edit', compact('curso'));
+  
+
+    }
+
+
+    public function update(Curso $curso, Request $request){
+
+        $curso->nombre = $request->nombre;
+        $curso->descripcion = $request->descripcion;
+        $curso->categoria = $request->categoria;
+        $curso->save();
+        return redirect()->route('cursos.show',$curso);
+
     }
 }
