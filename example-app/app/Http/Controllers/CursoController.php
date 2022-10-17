@@ -30,13 +30,14 @@ class CursoController extends Controller
 
         // return $request->all();
 
-        $curso = new Curso();
+        /*$curso = new Curso();
 
         $curso->nombre = $request->nombre;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
 
-        $curso->save();
+        $curso->save();*/
+        $curso = Curso::create($request->all());//el request->alt trae todos los atributos del curso que bienen del formulario
 
         return redirect()->route('cursos.show',$curso);
 
@@ -71,10 +72,13 @@ class CursoController extends Controller
        
 
 
-        $curso->nombre = $request->nombre;
-        $curso->descripcion = $request->descripcion;
-        $curso->categoria = $request->categoria;
-        $curso->save();
+        // $curso->nombre = $request->nombre;
+        // $curso->descripcion = $request->descripcion;
+        // $curso->categoria = $request->categoria;
+        // $curso->save();
+         
+        $curso->update($request->all());
+
         return redirect()->route('cursos.show',$curso);
 
     }

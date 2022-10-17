@@ -12,6 +12,11 @@ class Curso extends Model
     //por defecto administra la tabla curso, pero si se quiere administrar otra tabla se le asigna el siguiente comando
 
     //protected $table = "users";
+
+    // protected $fillable = ['nombre', 'descripcion', 'categoria'];
+
+    //protected $guarded= ['status']; // guardaria todos los campos menos el campus status
+    protected $guarded= [];//se debe dejar el array vacio por que no tenemos un campo protegido
 }
 
 
