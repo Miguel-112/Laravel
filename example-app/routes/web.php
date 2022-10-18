@@ -17,26 +17,27 @@ use App\Http\Controllers\CursoController;
 Route::get('/',HomeController::class);
 
 
-Route::controller(CursoController::class)->group(function(){
+// Route::controller(CursoController::class)->group(function(){
     
-    Route::get('cursos',[CursoController::class,'index'])->name('cursos.index');// con el name se le dan alias a los nombre para despues invocarlosdesde las vistas
-    Route::get('cursos/create',[CursoController::class, 'create'] )->name('cursos.create');
+//     Route::get('cursos',[CursoController::class,'index'])->name('cursos.index');// con el name se le dan alias a los nombre para despues invocarlosdesde las vistas
+//     Route::get('cursos/create',[CursoController::class, 'create'] )->name('cursos.create');
     
-    Route::post('cursos',[CursoController::class, 'store'])->name('cursos.store');
+//     Route::post('cursos',[CursoController::class, 'store'])->name('cursos.store');
 
-    Route::get('cursos/{curso}',[CursoController::class,'show'] )->name('cursos.show');
+//     Route::get('cursos/{curso}',[CursoController::class,'show'] )->name('cursos.show');
 
-    Route::get('cursos/{curso}/edit', [CursoController::class,'edit'] )->name('cursos.edit');
+//     Route::get('cursos/{curso}/edit', [CursoController::class,'edit'] )->name('cursos.edit');
 
-    Route::put('cursos/{curso}',[CursoController::class, 'update'])->name('cursos.update');
+//     Route::put('cursos/{curso}',[CursoController::class, 'update'])->name('cursos.update');
     
+//     Route::delete('cursos/{curso}',[CursoController::class, 'destroy'])->name('cursos.destroy');
 
 
+//Route::resource('asignaturas',CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos'); //el parametter es para que las variable que se envian atravez de la url no le ponga el nombre como signaturas si no que las deje como curso, ya que asi se reciben .
 
+Route::resource('cursos',CursoController::class);
 
-   
-
-});
+// });
 
 
 
