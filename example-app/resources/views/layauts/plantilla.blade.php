@@ -7,9 +7,18 @@
     <title>@yield('title')</title>
      {{-- <script src="https://cdn.tailwindcss.com"></script> 
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>  --}}
+
+       <style>
+        .active{
+            color: red;
+            font-weight: bold;
+        }
+       </style>
+
 </head>
 <body>
    
+  @include('layauts.partials.header')
 
 @yield('content')
 

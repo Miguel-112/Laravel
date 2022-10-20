@@ -13,6 +13,8 @@
 
     <li>
         <a href="{{route('cursos.show', $curso->id)}}">{{$curso->nombre}}</a>
+        <br>
+        {{route('cursos.show', $curso)}}
     </li>
     
     @endforeach

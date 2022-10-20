@@ -14,7 +14,7 @@ use App\Http\Controllers\CursoController;
 |
 */
 
-Route::get('/',HomeController::class);
+Route::get('/',HomeController::class)->name('home');
 
 
 // Route::controller(CursoController::class)->group(function(){
@@ -36,6 +36,8 @@ Route::get('/',HomeController::class);
 //Route::resource('asignaturas',CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos'); //el parametter es para que las variable que se envian atravez de la url no le ponga el nombre como signaturas si no que las deje como curso, ya que asi se reciben .
 
 Route::resource('cursos',CursoController::class);
+
+Route::view('nosotros','nosotros')->name('nosotros'); // se usa para crear vistas staticas
 
 // });
 
